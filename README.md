@@ -1,6 +1,6 @@
-# organized
+# flutter_tetris
 
-栗子的打卡地
+flutter version of tetris
 
 ## Getting Started
 
