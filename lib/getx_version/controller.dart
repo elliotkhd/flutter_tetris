@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter_tetris/state.dart';
+import 'package:flutter_tetris/getx_version/state.dart';
 import 'package:get/get.dart';
 
-import 'models.dart';
+import '../models.dart';
 
 class GetController extends GetxController {
   GetState state = GetState();
@@ -214,7 +214,7 @@ class GetController extends GetxController {
     for (var value in (state.shape.blocks)) {
       state.map[value.y][value.x].value = BlockColor.red;
     }
-    await Future.delayed(Duration(milliseconds: 70));
+    await Future.delayed(const Duration(milliseconds: 70));
     for (var value in (state.shape.blocks)) {
       state.map[value.y][value.x].value = BlockColor.black;
     }
@@ -229,7 +229,7 @@ class GetController extends GetxController {
       }
     }
     for (int i = 0; i < 7; i++) {
-      await Future.delayed(Duration(milliseconds: 70));
+      await Future.delayed(const Duration(milliseconds: 70));
       for (var value in lines) {
         for (var value1 in (state.map[value])) {
           value1.value = value1.value == BlockColor.red
@@ -295,16 +295,11 @@ class GetController extends GetxController {
         state.map[i][j].value = BlockColor.white;
       }
     }
-    await Future.delayed(Duration(milliseconds: 5));
+    await Future.delayed(const Duration(milliseconds: 5));
     for (int i = 0; i < 20; i++) {
       for (int j = 0; j < 10; j++) {
         state.map[i][j].value = BlockColor.black;
       }
     }
-  }
-  @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
   }
 }

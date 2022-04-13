@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'controller.dart';
-import 'models.dart';
+import '../models.dart';
 
 const blockWidth = 13.0;
 const lineWidth = blockWidth * 0.5;

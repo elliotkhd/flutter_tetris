@@ -218,7 +218,7 @@ class RiverpodVersionController {
     for (var value in (state.shape.blocks)) {
       ref.read(state.map[value.y][value.x].state).state = BlockColor.red;
     }
-    await Future.delayed(Duration(milliseconds: 70));
+    await Future.delayed(const Duration(milliseconds: 70));
     for (var value in (state.shape.blocks)) {
       ref.read(state.map[value.y][value.x].state).state = BlockColor.black;
     }
@@ -233,7 +233,7 @@ class RiverpodVersionController {
       }
     }
     for (int i = 0; i < 7; i++) {
-      await Future.delayed(Duration(milliseconds: 70));
+      await Future.delayed(const Duration(milliseconds: 70));
       for (var value in lines) {
         for (var value1 in (state.map[value])) {
           ref.read(value1.state).state = ref.read(value1) == BlockColor.red
@@ -299,7 +299,7 @@ class RiverpodVersionController {
         ref.read(state.map[i][j].state).state = BlockColor.white;
       }
     }
-    await Future.delayed(Duration(milliseconds: 5));
+    await Future.delayed(const Duration(milliseconds: 5));
     for (int i = 0; i < 20; i++) {
       for (int j = 0; j < 10; j++) {
         ref.read(state.map[i][j].state).state = BlockColor.black;

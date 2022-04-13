@@ -17,21 +17,21 @@ class RiverpodVersionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Body(),
+      body: _Body(),
     );
   }
 }
 
-class Body extends ConsumerStatefulWidget {
-  const Body({
+class _Body extends ConsumerStatefulWidget {
+  const _Body({
     Key? key,
   }) : super(key: key);
 
   @override
-  ConsumerState<Body> createState() => _BodyState();
+  ConsumerState<_Body> createState() => _BodyState();
 }
 
-class _BodyState extends ConsumerState<Body> {
+class _BodyState extends ConsumerState<_Body> {
   late final controller = RiverpodVersionController(ref);
 
   @override
@@ -51,21 +51,21 @@ class _BodyState extends ConsumerState<Body> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          GameAreaFrame(
+          _GameAreaFrame(
             controller: controller,
-            child: GameArea(
+            child: _GameArea(
               controller: controller,
             ),
           ),
-          ControlArea(controller: controller),
+          _ControlArea(controller: controller),
         ],
       ),
     );
   }
 }
 
-class GameAreaFrame extends StatelessWidget {
-  const GameAreaFrame({
+class _GameAreaFrame extends StatelessWidget {
+  const _GameAreaFrame({
     Key? key,
     required this.controller,
     required this.child,
@@ -90,7 +90,7 @@ class GameAreaFrame extends StatelessWidget {
                               .map((e1) => SizedBox(
                                     height: blockWidth,
                                     width: blockWidth,
-                                    child: e1 == 1 ? blackBlock : null,
+                                    child: e1 == 1 ? _blackBlock : null,
                                   ))
                               .toList(),
                         ))
@@ -195,7 +195,7 @@ class GameAreaFrame extends StatelessWidget {
                               .map((e1) => SizedBox(
                                     height: blockWidth,
                                     width: blockWidth,
-                                    child: e1 == 1 ? blackBlock : null,
+                                    child: e1 == 1 ? _blackBlock : null,
                                   ))
                               .toList(),
                         ))
@@ -222,8 +222,8 @@ class GameAreaFrame extends StatelessWidget {
   }
 }
 
-class GameArea extends StatelessWidget {
-  const GameArea({Key? key, required this.controller}) : super(key: key);
+class _GameArea extends StatelessWidget {
+  const _GameArea({Key? key, required this.controller}) : super(key: key);
   final RiverpodVersionController controller;
 
   @override
@@ -241,11 +241,11 @@ class GameArea extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          RussiaArea(state: controller.state),
+          _RussiaArea(state: controller.state),
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ScoreBoard(
+              _ScoreBoard(
                 controller: controller,
               )
             ],
@@ -256,8 +256,8 @@ class GameArea extends StatelessWidget {
   }
 }
 
-class ControlArea extends StatelessWidget {
-  const ControlArea({
+class _ControlArea extends StatelessWidget {
+  const _ControlArea({
     Key? key,
     required this.controller,
   }) : super(key: key);
@@ -278,7 +278,7 @@ class ControlArea extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    ControlButton(
+                    _ControlButton(
                       color: const Color(0xff2bbd1a),
                       onTap: () =>
                           controller.state.paused = !controller.state.paused,
@@ -287,7 +287,7 @@ class ControlArea extends StatelessWidget {
                       type: 3,
                       text: '暂停',
                     ),
-                    ControlButton(
+                    _ControlButton(
                       color: const Color(0xff2bbd1a),
                       onTap: controller.turnAround,
                       onTapDown: (detail) {},
@@ -295,7 +295,7 @@ class ControlArea extends StatelessWidget {
                       type: 3,
                       text: '音效',
                     ),
-                    ControlButton(
+                    _ControlButton(
                       color: const Color(0xffd10015),
                       onTap: controller.state.initAllBlocks,
                       onTapDown: (detail) {},
@@ -305,7 +305,7 @@ class ControlArea extends StatelessWidget {
                     ),
                   ],
                 ),
-                ControlButton(
+                _ControlButton(
                   color: const Color(0xff4749ee),
                   onTap: controller.moveToBottom,
                   onTapDown: (detail) {},
@@ -322,7 +322,7 @@ class ControlArea extends StatelessWidget {
             child: Stack(
               children: [
                 Align(
-                  child: ControlButton(
+                  child: _ControlButton(
                     color: const Color(0xff4749ee),
                     onTapDown: (detail) => controller.rotate(),
                     onTapUp: (detail) {},
@@ -332,7 +332,7 @@ class ControlArea extends StatelessWidget {
                   alignment: const Alignment(0, -1),
                 ),
                 Align(
-                  child: ControlButton(
+                  child: _ControlButton(
                     color: const Color(0xff4749ee),
                     onTapDown: (detail) => controller.moveDownForTimes(),
                     onTapUp: (detail) {
@@ -344,7 +344,7 @@ class ControlArea extends StatelessWidget {
                   alignment: const Alignment(0, 1),
                 ),
                 Align(
-                  child: ControlButton(
+                  child: _ControlButton(
                     color: const Color(0xff4749ee),
                     onTapDown: (detail) => controller.moveRightForTimes(),
                     onTapUp: (detail) {
@@ -356,7 +356,7 @@ class ControlArea extends StatelessWidget {
                   alignment: const Alignment(1, 0),
                 ),
                 Align(
-                  child: ControlButton(
+                  child: _ControlButton(
                     color: const Color(0xff4749ee),
                     onTapDown: (detail) => controller.moveLeftForTimes(),
                     onTapUp: (detail) {
@@ -408,8 +408,8 @@ class ControlArea extends StatelessWidget {
   }
 }
 
-class ControlButton extends StatefulWidget {
-  const ControlButton({
+class _ControlButton extends StatefulWidget {
+  const _ControlButton({
     Key? key,
     required this.color,
     required this.onTapDown,
@@ -435,10 +435,10 @@ class ControlButton extends StatefulWidget {
   final int type;
 
   @override
-  State<ControlButton> createState() => _ControlButtonState();
+  State<_ControlButton> createState() => _ControlButtonState();
 }
 
-class _ControlButtonState extends State<ControlButton> {
+class _ControlButtonState extends State<_ControlButton> {
   bool _pressed = false;
 
   @override
@@ -495,15 +495,15 @@ class _ControlButtonState extends State<ControlButton> {
   }
 }
 
-class ScoreBoard extends StatefulWidget {
-  const ScoreBoard({Key? key, required this.controller}) : super(key: key);
+class _ScoreBoard extends StatefulWidget {
+  const _ScoreBoard({Key? key, required this.controller}) : super(key: key);
   final RiverpodVersionController controller;
 
   @override
-  State<ScoreBoard> createState() => _ScoreBoardState();
+  State<_ScoreBoard> createState() => _ScoreBoardState();
 }
 
-class _ScoreBoardState extends State<ScoreBoard> {
+class _ScoreBoardState extends State<_ScoreBoard> {
   final bool _isShowingBestScore = true;
 
   @override
@@ -532,7 +532,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
                   .map(
                     (e) => Row(
                       children: [
-                        ...e.map((e2) => Block(blockColor: e2)).toList()
+                        ...e.map((e2) => _Block(blockColor: e2)).toList()
                       ],
                     ),
                   )
@@ -545,10 +545,10 @@ class _ScoreBoardState extends State<ScoreBoard> {
   }
 }
 
-class RussiaArea extends StatelessWidget {
+class _RussiaArea extends StatelessWidget {
   final RiverpodVersionState state;
 
-  const RussiaArea({Key? key, required this.state}) : super(key: key);
+  const _RussiaArea({Key? key, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -565,7 +565,7 @@ class RussiaArea extends StatelessWidget {
               .values
               .map(
                 (e) => Row(
-                  children: [...e.map((e2) => Block(blockColor: e2)).toList()],
+                  children: [...e.map((e2) => _Block(blockColor: e2)).toList()],
                 ),
               )
               .toList(),
@@ -575,8 +575,8 @@ class RussiaArea extends StatelessWidget {
   }
 }
 
-class Block extends StatelessWidget {
-  Block({
+class _Block extends StatelessWidget {
+  _Block({
     required this.blockColor,
     Key? key,
   }) : super(key: key);
@@ -593,16 +593,16 @@ class Block extends StatelessWidget {
       child: Consumer(builder: (_, ref, __) {
         var tmp = ref.watch(blockColor);
         return tmp == BlockColor.black
-            ? blackBlock
+            ? _blackBlock
             : tmp == BlockColor.white
-                ? whiteBlock
-                : redBlock;
+                ? _whiteBlock
+                : _redBlock;
       }),
     );
   }
 }
 
-const blackBlock = Padding(
+const _blackBlock = Padding(
   padding: EdgeInsets.all(0.5),
   child: DecoratedBox(
     decoration: BoxDecoration(
@@ -623,7 +623,7 @@ const blackBlock = Padding(
   ),
 );
 
-const whiteBlock = Padding(
+const _whiteBlock = Padding(
   padding: EdgeInsets.all(0.5),
   child: DecoratedBox(
     decoration: BoxDecoration(
@@ -643,7 +643,7 @@ const whiteBlock = Padding(
     ),
   ),
 );
-const redBlock = Padding(
+const _redBlock = Padding(
   padding: EdgeInsets.all(0.5),
   child: DecoratedBox(
     decoration: BoxDecoration(

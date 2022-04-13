@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:get/get.dart';
 
-import 'models.dart';
+import '../models.dart';
 
 class GetState {
   late final List<List<Rx<BlockColor>>> map;
